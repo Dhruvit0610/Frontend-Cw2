@@ -208,7 +208,7 @@
         },
          //  fetching data from the server
          created :function(){
-                     fetch("http://localhost:3030/Products")
+                     fetch("http://lessonappcw2-env.eba-fh3ih8gj.eu-west-2.elasticbeanstalk.com/Products")
                     .then(response => response.json())
                     .then(json => {
                     CardProduct.products = json;
@@ -251,7 +251,7 @@
                             
 
             searchItem : function(product){
-              fetch("http://localhost:3030/Products/search?q="+CardProduct.searchtext).then(function(response){
+              fetch("http://lessonappcw2-env.eba-fh3ih8gj.eu-west-2.elasticbeanstalk.com/Products/search?q="+CardProduct.searchtext).then(function(response){
                     response.json().then(function (json){
                         
                         CardProduct.products=json;});});
@@ -288,7 +288,7 @@
               }  
               console.log(client)
               alert("Order Submitted, Congrulatation!!!");
-                fetch("http://localhost:3030/Order",{
+                fetch("http://lessonappcw2-env.eba-fh3ih8gj.eu-west-2.elasticbeanstalk.com/Order",{
                 method:"POST",
                 headers:{"Content-Type":"application/json",},
                 body:JSON.stringify(client)}).then(function(response){
@@ -299,7 +299,7 @@
                 let carr=this.tempcard[i];
                console.log( CardProduct.lessonLeft(carr));
                console.log(carr.id)
-                fetch("http://localhost:3030/Products/" + carr.id, {
+                fetch("http://lessonappcw2-env.eba-fh3ih8gj.eu-west-2.elasticbeanstalk.com/Products/" + carr.id, {
                     method: "PUT",
                     headers: {"Content-Type": "application/json",}, body: JSON.stringify(
                         {"spaces": CardProduct.lessonLeft(carr)})}).then(function (response) {
